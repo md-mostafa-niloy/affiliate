@@ -1,0 +1,14 @@
+[
+  { "id": 1, "name": "Technology" },
+  { "id": 2, "name": "Analytics" },
+  { "id": 3, "name": "Security" },
+  { "id": 4, "name": "Marketing" },
+  { "id": 5, "name": "DevOps" },
+  { "id": 6, "name": "Design" },
+  { "id": 7, "name": "Payments" },
+  { "id": 8, "name": "Hosting" },
+  { "id": 9, "name": "Email Marketing" },
+  { "id": 10, "name": "Video" },
+  { "id": 11, "name": "CRM" },
+  { "id": 12, "name": "Content" }
+]

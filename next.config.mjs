@@ -2,13 +2,13 @@
 const nextConfig = {
   async rewrites() {
     return [
+      // 1. Shudhu /webitpay te gele Rizon er home page asbe
       {
-        // Jodi keu affiliate.visernic.com/webitpay te jay
         source: '/webitpay',
         destination: 'https://webitpay.vercel.app/webitpay',
       },
+      // 2. /webitpay/ er vitorer shobkichu (CSS, JS, Images, onnanno page) load hobe
       {
-        // Jodi keu webitpay er vitorer kono page e jay (e.g. /webitpay/about)
         source: '/webitpay/:path*',
         destination: 'https://webitpay.vercel.app/webitpay/:path*',
       },

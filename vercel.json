@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/webitpay/:path*",
+      "destination": "https://webitpay.vercel.app/:path*"
+    }
+  ]
+}

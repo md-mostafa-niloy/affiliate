@@ -7,8 +7,9 @@ const nextConfig = {
         destination: 'https://webitpay.vercel.app/webitpay',
       },
       {
-        source: '/webitpay/:path*',
-        destination: 'https://webitpay.vercel.app/webitpay/:path*',
+        // Ekhane * er bodole + deya hoyeche jate CSS theek vabe load hoy
+        source: '/webitpay/:path+',
+        destination: 'https://webitpay.vercel.app/webitpay/:path+',
       },
     ];
   },

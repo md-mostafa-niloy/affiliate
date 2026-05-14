@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/webitpay/:path*",
-      "destination": "https://webitpay.vercel.app/:path*"
+      "destination": "https://webitpay.vercel.app/webitpay:path*"
     }
   ]
 }

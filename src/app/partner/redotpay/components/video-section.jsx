@@ -10,14 +10,14 @@ export function RedotpayVideo() {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
     } else {
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
+      document.body.style.overflow = 'unset';
+      document.body.style.touchAction = 'auto';
     }
     return () => {
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
+      document.body.style.overflow = 'unset';
+      document.body.style.touchAction = 'auto';
     };
   }, [isOpen]);
 
@@ -53,7 +53,7 @@ export function RedotpayVideo() {
           className="relative max-w-4xl mx-auto group cursor-pointer"
           onClick={() => setIsOpen(true)}
         >
-          <div className="relative aspect-video bg-card rounded-2xl sm:rounded-[2rem] border border-border group-hover:border-primary/50 overflow-hidden shadow-lg transition-colors duration-300 transform-gpu">
+          <div className="relative aspect-video bg-card rounded-2xl sm:rounded-[2rem] border border-border group-hover:border-primary/50 overflow-hidden shadow-lg transition-colors duration-300 isolate">
             <img 
               src="https://i.postimg.cc/vHf56K4T/Image-nbmijmnbmijmnbmi-(1).png" 
               alt="Redotpay App Tutorial"
@@ -63,8 +63,8 @@ export function RedotpayVideo() {
             
             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
               <div className="relative flex items-center justify-center">
-                <div className="absolute w-14 h-14 sm:w-20 sm:h-20 bg-primary/60 rounded-full animate-ping"></div>
-                <div className="relative w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-full flex items-center justify-center text-white shadow-lg transform-gpu group-hover:scale-110 transition-transform duration-300">
+                <div className="absolute w-14 h-14 sm:w-20 sm:h-20 bg-primary/60 rounded-full animate-ping" style={{ animationDuration: '2s' }}></div>
+                <div className="relative w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
                   <FaPlay className="ml-1 text-lg sm:text-2xl" />
                 </div>
               </div>
@@ -85,30 +85,36 @@ export function RedotpayVideo() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6 bg-black/95 cursor-pointer"
-            style={{ touchAction: 'none' }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-2 sm:p-4 bg-black/95 cursor-pointer overscroll-none"
             onClick={() => setIsOpen(false)}
           >
-            <div 
-              className="relative w-full max-w-5xl aspect-video bg-black rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl cursor-default"
-              style={{ touchAction: 'auto' }}
+            <motion.div 
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="relative w-full max-w-5xl bg-black rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 shadow-2xl cursor-default"
               onClick={(e) => e.stopPropagation()}
             >
               <button 
                 onClick={() => setIsOpen(false)}
-                className="absolute top-2 right-2 sm:top-4 sm:right-4 z-50 w-8 h-8 sm:w-10 sm:h-10 bg-black/60 hover:bg-primary text-white rounded-full flex items-center justify-center transition-colors border border-white/20"
+                className="absolute -top-2 -right-2 sm:top-4 sm:right-4 z-30 w-10 h-10 sm:w-12 sm:h-12 bg-black/70 hover:bg-primary text-white rounded-full flex items-center justify-center transition-colors border border-white/20 m-4"
+                aria-label="Close video"
               >
                 <FaTimes className="text-sm sm:text-lg" />
               </button>
               
-              <iframe 
-                src="https://www.youtube.com/embed/DurbQ34XYSk?autoplay=1" 
-                title="Redotpay Tutorial"
-                className="w-full h-full border-0 bg-black"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
+              <div className="relative w-full aspect-video bg-black overflow-hidden rounded-xl sm:rounded-2xl">
+                <iframe 
+                  src="https://www.youtube.com/embed/DurbQ34XYSk?autoplay=1&rel=0&modestbranding=1" 
+                  title="Redotpay Tutorial"
+                  className="absolute top-0 left-0 w-full h-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

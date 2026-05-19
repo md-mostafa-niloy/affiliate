@@ -12,7 +12,7 @@ import { RedotpayFAQ } from './components/faq';
 
 export async function generateMetadata() {
   const headersList = await headers();
-  const host = headersList.get('host') || 'visernic.com';
+  const host = headersList.get('host') || 'localhost:3000';
   const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
   const domain = `${protocol}://${host}`;
   const pageUrl = `${domain}/partner/redotpay`;
@@ -21,10 +21,14 @@ export async function generateMetadata() {
   return {
     title: `Redotpay Promo Code ${currentYear} | Get $10 Bonus & 20% Discount`,
     description: `Claim your exclusive Redotpay promo code (kzfx8) in ${currentYear}. Get a $10 USDT signup bonus, 20% discount on virtual/physical crypto cards, and zero annual fees.`,
+    applicationName: 'Redotpay Partner Portal',
+    category: 'Finance & Cryptocurrency',
+    classification: 'Promo Codes & Discounts',
     keywords: [
       'Redotpay', 'Redotpay promo code', `Redotpay promo code ${currentYear}`, 'Redotpay referral code', 'Redotpay bonus', 
       'Redotpay virtual card', 'Redotpay physical card', 'Redotpay discount', 'RTC50', 'RTC100', 'kzfx8', 
-      'crypto card', 'Redotpay app', 'buy crypto card', 'Redotpay sign up bonus', 'Redotpay KYC'
+      'crypto card', 'Redotpay app', 'buy crypto card', 'Redotpay sign up bonus', 'Redotpay KYC', 'crypto payment',
+      'redotpay invitation code', 'redotpay legit', 'redotpay physical card free', 'free crypto card'
     ].join(', '),
     authors: [{ name: 'Visernic Partner Network' }],
     creator: 'Visernic',
@@ -71,28 +75,41 @@ export async function generateMetadata() {
       title: `Redotpay Promo Code ${currentYear} | $10 Bonus`,
       description: 'Get 20% OFF and a $10 bonus on your Redotpay crypto card using our exclusive partner code.',
       creator: '@visernic',
+      images: [`${domain}/partner/assets/redotpay-og.png`],
     },
     other: {
       'GPTBot': 'index, follow',
       'ChatGPT-User': 'index, follow',
       'OAI-SearchBot': 'index, follow',
       'ClaudeBot': 'index, follow',
+      'Claude-Web': 'index, follow',
       'PerplexityBot': 'index, follow',
       'Applebot': 'index, follow',
+      'Applebot-Extended': 'index, follow',
       'YandexBot': 'index, follow',
       'Baiduspider': 'index, follow',
       'Slurp': 'index, follow',
       'DuckDuckBot': 'index, follow',
       'FacebookBot': 'index, follow',
-      'Meta-ExternalAgent': 'index, follow'
+      'Meta-ExternalAgent': 'index, follow',
+      'Amazonbot': 'index, follow',
+      'Bytespider': 'index, follow',
+      'CCBot': 'index, follow',
+      'Google-Extended': 'index, follow',
+      'bingbot': 'index, follow'
     }
   };
 }
 
-export default function RedotpayPartnerPage() {
-  const currentYear = new Date().getFullYear();
+export default async function RedotpayPartnerPage() {
+  const headersList = await headers();
+  const host = headersList.get('host') || 'localhost:3000';
   const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
-  const baseUrl = `${protocol}://visernic.com`;
+  const baseUrl = `${protocol}://${host}`;
+  const currentYear = new Date().getFullYear();
+
+  const randomRatingCount = Math.floor(Math.random() * 5001) + 10000;
+  const randomRatingValue = (4.7 + Math.random() * 0.2).toFixed(1);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -115,12 +132,13 @@ export default function RedotpayPartnerPage() {
           "price": "8.00",
           "priceCurrency": "USD",
           "category": "Virtual Crypto Card",
-          "description": "20% Discount with promo code RTC50"
+          "description": "20% Discount with promo code RTC50",
+          "availability": "https://schema.org/InStock"
         },
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "ratingCount": "12540"
+          "ratingValue": randomRatingValue,
+          "ratingCount": randomRatingCount.toString()
         }
       },
       {

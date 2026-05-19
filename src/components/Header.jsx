@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX, FiArrowRight } from 'react-icons/fi';
 
@@ -11,98 +11,105 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 15);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Features', href: '#features' },
-    { name: 'Partners', href: '#partners' },
-    { name: 'Solutions', href: '#solutions' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'Partners', href: '/partner' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
     <header 
-      className={`sticky top-0 z-[100] transition-all duration-300 ${
+      className={`sticky top-0 z-[100] w-full transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/80 backdrop-blur-xl border-b border-border py-3 shadow-lg shadow-black/5' 
-          : 'bg-transparent py-5'
+          ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-[0_4px_30px_rgba(0,0,0,0.03)]' 
+          : 'bg-transparent border-b border-transparent'
       }`}
     >
-      <nav className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <a href="/" className="relative z-10 flex items-center">
+      <nav className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+        
+        <Link href="/" className="flex items-center shrink-0">
           <img
             src="/logo.svg"
             alt="Visernic"
-            className="h-8 md:h-10 w-auto object-contain transition-transform duration-300 hover:scale-105"
+            className="h-7 sm:h-8 w-auto object-contain transition-transform duration-300 hover:scale-102"
           />
-        </a>
+        </Link>
 
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-1 bg-secondary/40 backdrop-blur-xs p-1.5 rounded-full border border-border/40">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
-              className="px-5 py-2 text-sm lg:text-base font-bold text-foreground/80 hover:text-primary transition-colors relative group"
+              className="px-5 py-2 text-xs lg:text-sm font-bold text-muted hover:text-primary rounded-full transition-all duration-200 hover:bg-background relative group"
             >
-              {link.name}
-              <span className="absolute bottom-0 left-5 right-5 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-            </a>
+              <span className="relative z-10">{link.name}</span>
+            </Link>
           ))}
         </div>
 
-        <div className="hidden md:block">
-          <button
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-6 py-3 bg-primary text-white rounded-xl font-black text-sm lg:text-base flex items-center gap-2 hover:bg-opacity-90 hover:shadow-xl hover:shadow-primary/20 transition-all active:scale-95"
+        <div className="hidden md:block shrink-0">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-full font-black text-xs sm:text-sm shadow-xs hover:bg-primary/95 hover:shadow-md active:scale-98 transition-all transform-gpu"
           >
-            GET STARTED <FiArrowRight className="text-lg" />
-          </button>
+            GET STARTED
+            <div className="w-5 h-5 bg-white/10 rounded-full flex items-center justify-center">
+              <FiArrowRight className="text-xs" />
+            </div>
+          </Link>
         </div>
 
         <button
-          className="md:hidden p-2 text-foreground relative z-10"
+          className="md:hidden p-2 text-foreground rounded-lg bg-secondary/50 border border-border/50 active:scale-95 transition-transform"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Menu"
         >
-          {isOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+          {isOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
         </button>
 
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="absolute top-full left-0 right-0 bg-white border-b border-border overflow-hidden md:hidden shadow-2xl"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.15 }}
+              className="absolute top-full left-0 w-full bg-background/98 backdrop-blur-md border-b border-border shadow-lg md:hidden overflow-hidden"
             >
-              <div className="p-6 flex flex-col gap-4">
+              <div className="p-4 flex flex-col gap-1">
                 {navLinks.map((link) => (
-                  <a
+                  <Link
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-bold text-foreground hover:text-primary transition-colors py-2 border-b border-secondary"
+                    className="text-sm font-bold text-foreground hover:text-primary transition-colors py-3 px-4 rounded-xl hover:bg-secondary/60 flex items-center justify-between group"
                   >
-                    {link.name}
-                  </a>
+                    <span>{link.name}</span>
+                    <FiArrowRight className="opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
+                  </Link>
                 ))}
-                <button 
-                  onClick={() => {
-                    setIsOpen(false); 
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                  }} 
-                  className="w-full mt-2 px-6 py-4 bg-primary text-white rounded-xl font-black flex items-center justify-center gap-2"
-                >
-                  START JOURNEY <FiArrowRight />
-                </button>
+                
+                <div className="pt-2 mt-1 border-t border-border/50">
+                  <Link
+                    href="/contact"
+                    onClick={() => setIsOpen(false)}
+                    className="w-full px-5 py-3.5 bg-primary text-white rounded-xl font-black text-sm flex items-center justify-center gap-2 active:scale-98 transition-all transform-gpu shadow-xs"
+                  >
+                    START JOURNEY <FiArrowRight className="text-base" />
+                  </Link>
+                </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
+
       </nav>
     </header>
   );

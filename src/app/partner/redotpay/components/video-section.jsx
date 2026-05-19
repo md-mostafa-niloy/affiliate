@@ -81,29 +81,35 @@ export function RedotpayVideo() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 bg-black/95 overscroll-none"
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 bg-black/95 cursor-pointer overscroll-none select-none"
             onClick={() => setIsOpen(false)}
           >
-            <div 
-              className="relative w-full max-w-4xl aspect-video bg-black rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 shadow-2xl cursor-default"
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="relative w-full max-w-4xl bg-black rounded-xl overflow-hidden border border-white/10 shadow-2xl cursor-default transform-gpu"
               onClick={(e) => e.stopPropagation()}
             >
               <button 
                 onClick={() => setIsOpen(false)}
-                className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 w-8 h-8 sm:w-10 sm:h-10 bg-black/60 hover:bg-primary text-white rounded-full flex items-center justify-center transition-colors border border-white/20 active:scale-95"
+                className="absolute top-2 right-2 z-30 w-8 h-8 sm:w-10 sm:h-10 bg-black/70 hover:bg-primary text-white rounded-full flex items-center justify-center transition-colors border border-white/10 active:scale-90 transform-gpu"
               >
                 <FaTimes className="text-sm sm:text-lg" />
               </button>
               
-              <iframe 
-                src="https://www.youtube.com/embed/DurbQ34XYSk?autoplay=1" 
-                title="Redotpay Tutorial"
-                className="w-full h-full border-0 bg-black absolute inset-0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
+              <div className="relative w-full pb-[56.25%] h-0 bg-black overflow-hidden rounded-xl transform-gpu">
+                <iframe 
+                  src="https://www.youtube.com/embed/DurbQ34XYSk?autoplay=1" 
+                  title="Redotpay Tutorial"
+                  className="absolute top-0 left-0 w-full h-full border-0 bg-black transform-gpu"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

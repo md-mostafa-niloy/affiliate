@@ -82,20 +82,16 @@ export function RedotpayVideo() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-black/95 cursor-pointer overscroll-none"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 bg-black/95 overscroll-none"
             onClick={() => setIsOpen(false)}
           >
-            <motion.div 
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="relative w-full max-w-5xl aspect-video max-h-[90vh] bg-black rounded-xl sm:rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl cursor-default transform-gpu"
+            <div 
+              className="relative w-full max-w-4xl aspect-video bg-black rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 shadow-2xl cursor-default"
               onClick={(e) => e.stopPropagation()}
             >
               <button 
                 onClick={() => setIsOpen(false)}
-                className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 w-8 h-8 sm:w-10 sm:h-10 bg-black/60 hover:bg-primary text-white rounded-full flex items-center justify-center transition-colors border border-white/20"
+                className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 w-8 h-8 sm:w-10 sm:h-10 bg-black/60 hover:bg-primary text-white rounded-full flex items-center justify-center transition-colors border border-white/20 active:scale-95"
               >
                 <FaTimes className="text-sm sm:text-lg" />
               </button>
@@ -103,11 +99,11 @@ export function RedotpayVideo() {
               <iframe 
                 src="https://www.youtube.com/embed/DurbQ34XYSk?autoplay=1" 
                 title="Redotpay Tutorial"
-                className="w-full h-full border-0 bg-black"
+                className="w-full h-full border-0 bg-black absolute inset-0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
-            </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

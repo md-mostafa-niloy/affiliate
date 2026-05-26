@@ -21,12 +21,12 @@ export async function generateMetadata() {
 
   return {
     title: `Tevau Crypto Card | 20% Discount Promo Code ${currentYear}`,
-    description: `Sign up for Tevau using referral code 972272. Apply promo code vsn in ${currentYear} to instantly get a 20% discount on Virtual ($10), Plastic ($100), and Metal ($199) cards!`,
+    description: `Sign up for Tevau using referral code 972272. Apply promo code VISERNIC or VISERNIC8 in ${currentYear} to instantly get a 20% discount on Virtual ($10), Plastic ($100), and Metal ($199) cards!`,
     applicationName: 'Tevau Partner Portal',
     category: 'Finance & Cryptocurrency',
     classification: 'Premium Crypto Cards',
     keywords: [
-      'Tevau crypto card', 'Tevau referral code 972272', 'Tevau promo code vsn', 'Tevau discount code', 'Tevau virtual card', 
+      'Tevau crypto card', 'Tevau referral code 972272', 'Tevau promo code VISERNIC or VISERNIC8', 'Tevau discount code', 'Tevau virtual card', 
       'Tevau metal card', `Tevau app ${currentYear}`, 'Visa crypto card', 'crypto to fiat', 'buy crypto card'
     ].join(', '),
     authors: [{ name: 'Visernic Partner Network' }],
@@ -48,7 +48,7 @@ export async function generateMetadata() {
     },
     openGraph: {
       title: `Tevau Crypto Card | Exclusive Discounts ${currentYear}`,
-      description: 'Use code 972272 and vsn to get a 20% discount on all your Tevau Virtual and Physical cards.',
+      description: 'Use code 972272 and VISERNIC or VISERNIC8 to get a 20% discount on all your Tevau Virtual and Physical cards.',
       url: pageUrl,
       siteName: 'Visernic Partner Network',
       type: 'website',
@@ -56,7 +56,7 @@ export async function generateMetadata() {
     twitter: {
       card: 'summary_large_image',
       title: `Tevau Crypto Card Offers ${currentYear}`,
-      description: 'Get massive discounts on physical and virtual crypto cards using Tevau code 972272 and vsn.',
+      description: 'Get massive discounts on physical and virtual crypto cards using Tevau code 972272 and VISERNIC or VISERNIC8.',
     },
     other: {
       'GPTBot': 'index, follow',
@@ -88,7 +88,7 @@ export default async function TevauPartnerPage() {
         "@id": `${baseUrl}/partner/tevau/#webpage`,
         "url": `${baseUrl}/partner/tevau`,
         "name": `Tevau Crypto Card | 20% Discount Promo Code ${currentYear}`,
-        "description": "Claim 20% discount on Tevau crypto cards using promo code vsn and referral 972272.",
+        "description": "Claim 20% discount on Tevau crypto cards using promo code VISERNIC or VISERNIC8 and referral 972272.",
         "inLanguage": "en-US"
       },
       {

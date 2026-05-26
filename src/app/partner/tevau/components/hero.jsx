@@ -91,8 +91,8 @@ export function TevauHero() {
         >
           {[
             { label: 'Referral Code', code: '972272', type: 'ref', highlight: false },
-            { label: '20% OFF Promo', code: 'VISERNIC', type: 'c1', highlight: true },
-            { label: '20% OFF Promo', code: 'VISERNIC8', type: 'c2', highlight: true }
+            { label: '20% OFF Virtual Promo', code: 'VISERNIC', type: 'c1', highlight: true },
+            { label: '20% OFF Physical Promo', code: 'VISERNIC8', type: 'c2', highlight: true }
           ].map((item) => (
             <div 
               key={item.type}

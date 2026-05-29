@@ -73,14 +73,14 @@ export function TutorialFAQ() {
                   className="w-full p-5 text-left flex justify-between items-center gap-4 focus:outline-none group"
                 >
                   <div className="flex items-center gap-4">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${isOpen ? 'bg-primary text-white' : 'bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white'}`}>
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300 ${isOpen ? 'bg-primary text-white' : 'bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white'}`}>
                       <Icon className="w-5 h-5" />
                     </div>
                     <span className={`font-bold text-base md:text-lg transition-colors ${isOpen ? 'text-primary' : 'text-foreground'}`}>
                       {faq.question}
                     </span>
                   </div>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 bg-primary/10 text-primary' : 'bg-secondary text-foreground/60'}`}>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 bg-primary/10 text-primary' : 'bg-secondary text-foreground/60'}`}>
                     <FaChevronDown className="w-4 h-4" />
                   </div>
                 </button>
